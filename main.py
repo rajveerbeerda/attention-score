@@ -88,12 +88,12 @@ def main_function():
         audio_path = os.path.join(audio_dir, student_name + ".wav")
         audio_values[student_name] = detect_voice(audio_path)
 
-    grade_values = grading(eye_values, face_values)
+    grade_values = grading(audio_values, eye_values, face_values)
     sorted_grades = sorted(grade_values.items(), key=operator.itemgetter(1), reverse=True)
 
     return sorted_grades, 1
 
-def grading(eye_values, face_values):
+def grading(audio_values, eye_values, face_values):
     names = eye_values.keys()
     grades = {}
     for i in names:
